@@ -1,0 +1,96 @@
+@use "./vars.scss" as *;
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap');
+
+@font-face {
+  font-family: "Merriweather", serif;
+  src: url("@/assets/fonts/Merriweather-Light.ttf") format("ttf");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Merriweather", serif;
+  src: url("@/assets/fonts/Merriweather-Regular.ttf") format("ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Merriweather", serif;
+  src: url("@/assets/fonts/Merriweather-Bold.ttf") format("ttf");
+  font-weight: 700;
+  font-style: normal;
+}
+
+:root {
+  --sizeWidthDefaultContainer: 1216px;
+  --sizeWidthDefault: 1920px;
+
+  --sizeWidthPadContainer: 720px;
+  --sizeWidthPad: 974px;
+
+  --sizeWidthPhoneContainer: 300px;
+  --sizeWidthPhone: 320px;
+
+  --colorBg: #F6F3F3;
+  --colorFooterBg: #ECEAEA;
+  --primaryText: #343030;
+  --secondaryText: #FFF;
+  --strikethroughText: #A0A0A0;
+  --buttonNormal: #403432;
+  --buttonHover: #776763;
+  --buttonDisabled: #C1B4B1;
+  --buttonInCart: #5B3A32;
+  --colorBorderInactive: #E1E1E1;
+  --colorBorderActive: #B5B5B5;
+  --buttonTextColor: #F4F6F9;
+
+  --font-family: "Merriweather", serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: all 0.2s ease-in-out;
+}
+
+*:focus {
+  outline: none;
+}
+
+body {
+  scroll-behavior: smooth;
+  font-family: $font-family;
+  font-weight: 400;
+  color: $primaryText;
+  background-color: $colorBg;
+  font-style: normal;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+.container {
+  max-width: $sizeWidthDefaultContainer;
+  margin: 0 auto;
+
+  @media (max-width: 768px) {
+    max-width: $sizeWidthPadContainer;
+  }
+
+  @media (max-width: 360px) {
+    max-width: $sizeWidthPhoneContainer;
+  }
+}
