@@ -39,7 +39,7 @@ export default {
     margin-bottom: 320px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: stretch;
     gap: 32px;
   }
 }

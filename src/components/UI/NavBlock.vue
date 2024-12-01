@@ -10,6 +10,7 @@ export default {
       v-for="(link, index) in $store.state.links"
       :key="index"
       class="nav-link"
+      href="#"
     >
       {{ link }}
     </a>
