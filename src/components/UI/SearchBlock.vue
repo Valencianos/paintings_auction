@@ -4,31 +4,35 @@ import ButtonUI from "@/components/UI/ButtonUI.vue";
 export default {
   name: "SearchBlock",
   components: { ButtonUI },
-  computed: {
-    filteredPaintings() {
-      return this.$store.state.paintings.filter((pic) => {
-        return (
-          pic.title.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
-        );
-      });
-    },
+  data() {
+    return {
+      searchQuery: "",
+    };
   },
+  // computed: {
+  //   searchedProducts() {
+  //     return paintings.value.filter((painting) => {
+  //       return (
+  //         painting.title
+  //           .toLowerCase()
+  //           .indexOf(searchQuery.value.toLowerCase()) !== -1
+  //       );
+  //     });
+  //   },
+  // },
 };
 </script>
 
 <template>
-  <form>
-    <div class="form-wrapper">
-      <input
-        type="text"
-        name="search"
-        id="search-input"
-        placeholder="Поиск по названию картины"
-      />
-      <label for="search-input"></label>
-      <ButtonUI btnTitle="Найти" @click="filteredPaintings" />
-    </div>
-  </form>
+  <div class="form-wrapper">
+    <input
+      type="text"
+      class="search"
+      placeholder="Поиск по названию картины"
+      v-model="searchQuery"
+    />
+    <ButtonUI btnTitle="Найти" />
+  </div>
 </template>
 
 <style scoped lang="scss">
@@ -38,8 +42,16 @@ export default {
   border: 1px solid $colorBorderInactive;
   align-items: center;
 }
-
-#search-input {
-  width: 416px;
+.search {
+  font-family: $font-family;
+  display: block;
+  width: 294px;
+  color: $searchText;
+  font-size: 14px;
+  line-height: 150%; /* 21px */
+  border: none;
+  font-weight: 400;
+  padding: 10px 16px;
+  background-color: transparent;
 }
 </style>
