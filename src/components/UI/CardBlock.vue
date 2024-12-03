@@ -1,5 +1,6 @@
 <script>
 import ButtonUI from "@/components/UI/ButtonUI.vue";
+import store from "@/store";
 
 export default {
   name: "CardBlock",
@@ -11,9 +12,19 @@ export default {
     price: Number,
     isSold: Boolean,
   },
+  data() {
+    return {
+      loading: false,
+    };
+  },
+  computed: {
+    paintings() {
+      return store.getters.availablePaintings;
+    },
+  },
   methods: {
     hasDiscount() {
-      return this.$store.state.paintings.oldPrice;
+      return store.state.paintings.oldPrice;
     },
     formatPrice(price) {
       const temp = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
@@ -22,6 +33,10 @@ export default {
     addToCart() {
       this.$store.commit("addToCart", true);
     },
+  },
+  created() {
+    this.loading = true;
+    store.dispatch("fetchPaintings").then(() => (this.loading = false));
   },
 };
 </script>
